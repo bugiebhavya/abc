@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load bootstrap3 %}
+<div class="container text-center">
+
+
+    <h1>New Item</h1>
+
+
+    <div style="margin:auto;">
+
+    <form method="POST" class="form" >
+    {% csrf_token %}
+    {{ bootstrap_form form.as_p}}
+    <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+
+  </div>
+
+    <script>var editor = new MediumEditor('.editable');</script>
+
+    </div>
+{% endblock %}

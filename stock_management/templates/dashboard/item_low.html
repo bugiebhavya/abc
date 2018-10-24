@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br>
+
+
+
+<div class="centerstage jumbotron">
+  <table class="table">
+    <thead class="thead-dark">
+
+
+    <tr>
+
+      <th>Name</th>
+      <th>Brand Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Total Price</th>
+      <th></th>
+      <th></th>
+    </tr>
+</thead>
+
+
+{% for item in item_list %}
+{% if item.quantity <= 10 %}
+
+<tr>
+
+
+        <div class="post">
+          <div class="container">
+            <td><h1><a class="cap" href="{% url 'dashboard:item_detail' pk=item.pk %}">{{ item.name }}</a></h1></td>
+            <td><h1 class="cap">{{ item.brand }}</h1></td>
+            <td><h1>{{ item.price }}</h1></td>
+            <td><h1>{{ item.quantity }}</h1></td>
+            <td><h1>{{ item.total_price }}</h1></td>
+            <td><a class="btn btn-primary" href="{% url 'dashboard:item_edit' pk=item.pk %}">Edit</span></a></td>
+            <td><a class="btn btn-danger" href="{% url 'dashboard:item_remove' pk=item.pk %}">Remove</span></a></td>
+
+
+          </tr>
+          </div>
+    {%else%}
+
+    {%endif%}
+    {% endfor %}
+</div>
+</table>
+
+</div>
+<br><br>
+
+<form method="get" action="{% url 'dashboard:item_new' %}" class="form-group">
+<button type="submit" class="btn btn-success" href="" style="text-align: center;
+    border: 3px solid green;">Add Item</button>
+</div>
+
+{% endblock %}
